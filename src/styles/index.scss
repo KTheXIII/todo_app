@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    color: #191919;
+}
+
+.todo-list {
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 60%;
+    padding: 1em;
+
+    border: 1px solid #0000002a;
+    border-radius: 1px;
+
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 12px 0 -5px #eee,
+        0 12px 1px -4px rgba(0, 0, 0, 0.15), 0 22px 0 -10px #eee,
+        0 22px 1px -9px rgba(0, 0, 0, 0.15);
+
+    .todo-item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 30px 20px 0;
+        width: 80%;
+        border-bottom: 1px solid #a1a1a1;
+        font-weight: 100;
+        font-size: 15px;
+        color: #333333;
+
+        input[type='checkbox'] {
+            margin-right: 10px;
+        }
+    }
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 500px) {
+    .todo-list {
+        width: 90%;
+    }
+}
