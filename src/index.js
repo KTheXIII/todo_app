@@ -1,15 +1,17 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import './styles/index.scss'
-import Todo from './components/ToDo'
-import Test from './components/Test'
-import PropTest from './components/PropTest'
+import './styles/main.scss'
+import AppName from './components/AppName'
+import ToDoList from './components/TodoList'
 
 class App extends Component {
     render() {
-        // return <Test />
-        // return <Todo />
-        return <PropTest />
+        return (
+            <div className="container ">
+                <AppName />
+                <ToDoList />
+            </div>
+        )
     }
 }
 

@@ -6,9 +6,25 @@ body {
     color: #191919;
 }
 
+.headerContainer {
+    margin: 10px auto;
+    margin-top: 50px;
+    // text-align: center;
+    padding: 1em;
+    width: 60%;
+    border: 1px solid #0000002a;
+    border-radius: 1px;
+
+    color: rgb(112, 112, 112);
+
+    h1 {
+        margin: 0;
+    }
+}
+
 .todo-list {
     margin: 0 auto;
-    margin-top: 50px;
+    // margin-top: 50px;
     width: 60%;
     padding: 1em;
 
@@ -37,8 +53,20 @@ body {
 }
 
 /* For mobile phones: */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 414px) {
+    .headerContainer {
+        width: 85%;
+    }
     .todo-list {
-        width: 90%;
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .headerContainer {
+        width: 70%;
+    }
+    .todo-list {
+        width: 70%;
     }
 }
