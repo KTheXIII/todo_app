@@ -1,44 +1,15 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-$light-mode: (
-    primary: #ffffff,
-    textcolor: #3d3d3d,
-    buttonBack: #f1f1f1
-);
-
-$dark-mode: (
-    primary: #222,
-    textcolor: #d3d3d3
-);
-
 * {
     box-sizing: border-box;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 body {
-    background-color: map-get($map: $light-mode, $key: primary);
-    color: map-get($map: $light-mode, $key: textcolor);
+    background-color: #ffffff;
+    color: #3d3d3d;
     margin: 0;
-}
-
-button {
-    margin: auto 10px;
-    background-color: map-get($map: $light-mode, $key: buttonBack);
-    color: #222;
-    border: none;
-    padding: 0px;
-    text-align: center;
-}
-
-button:active {
-    transform: scale(0.85);
-}
-
-button:hover {
-    cursor: pointer;
-    background-color: #f7f7f7;
 }
 
 .noselect {
@@ -86,6 +57,8 @@ button:hover {
         width: 35px;
         height: 32px;
         border-radius: 50%;
+        background-color: #f1f1f1;
+        color: #222;
         border: none;
         padding: 0px;
         font-size: 16px;
@@ -97,56 +70,16 @@ button:hover {
         content: '\02715';
         transform: rotate(45deg);
     }
-}
 
-.settings-con {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 10px;
-    margin-bottom: 5px;
-
-    .settings-btn {
-        margin-left: 0;
-        display: block;
-        width: max-content;
-        height: 28px;
-        padding: 0 10px;
-        border-radius: 7px;
-        font-size: 12px;
-        text-transform: uppercase;
-
-        text-align: center;
+    button:active {
+        transform: scale(0.85);
     }
 
-    .downloadbtn:after {
-        display: block;
-        font-size: 14px;
-        content: '\21E9';
-        // transform: rotate(45deg);
-    }
-
-    .uploadbtn:after {
-        display: block;
-        font-size: 14px;
-        content: '\21E9';
-        transform: rotate(180deg);
-    }
-
-    .settings-btn:hover {
+    button:hover {
         cursor: pointer;
-        // background-color: #474747;
-    }
-
-    .settings-btn:active {
-        transform: scale(0.9);
-    }
-
-    .rightside {
-        justify-self: flex-end;
-        text-align: right;
+        background-color: #f7f7f7;
     }
 }
-
 .todo-item {
     display: flex;
     justify-content: stretch;
@@ -157,21 +90,28 @@ button:hover {
         flex-grow: 1;
         width: 300px;
         word-wrap: break-word;
-        margin: 12px auto;
     }
 
     .remove-item {
         padding: 0;
         border: none;
         height: 50%;
-        margin: auto 10px;
+        margin: auto;
         padding: 0 5px;
         background: none;
-        font-size: 14px;
-    }
 
-    .remove-item:hover {
-        cursor: pointer;
+        font-size: 14px;
+        // text-align: center;
+        // margin: auto 5px;
+        // padding: 2px 7px;
+        // color: rgb(0, 0, 0);
+        // cursor: pointer;
+
+        // p {
+        //     font-size: 13px;
+        //     font-family: 'Open Sans', sans-serif;
+        //     margin: auto 0;
+        // }
     }
 
     .remove-item:active {
@@ -223,6 +163,13 @@ button:hover {
     background-color: #f1f1f1;
 }
 
+.checkallBox {
+    display: flex;
+    float: right;
+    padding-left: 10px;
+    padding-top: 9px;
+}
+
 @media only screen and (min-width: 768px) {
     .form-checkbox {
         margin-left: 0px;
@@ -248,7 +195,7 @@ button:hover {
 @media (prefers-color-scheme: dark) {
     body {
         color: rgb(211, 211, 211);
-        background-color: map-get($map: $dark-mode, $key: primary);
+        background-color: #222;
     }
 
     .appname {
@@ -274,16 +221,6 @@ button:hover {
             color: #c7c7c7;
             background-color: #919191;
         }
-    }
-
-    button {
-        color: #c7c7c7;
-        background-color: #666;
-    }
-
-    button:hover {
-        color: #c7c7c7;
-        background-color: #919191;
     }
 
     .form-checkbox {
