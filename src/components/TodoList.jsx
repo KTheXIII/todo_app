@@ -15,7 +15,8 @@ class TodoList extends Component {
     this.state = {
       isLoading: true,
       todos: testData,
-      todoText: ''
+      todoText: '',
+      currentView: 'active'
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -112,12 +113,35 @@ class TodoList extends Component {
   }
 
   completeAll() {
-    console.log('complete all')
+    this.setState(prevState => {
+      let updatedData
+      if (prevState.todos) updatedData = prevState.todos
+      else updatedData = []
+
+      updatedData.forEach(data => {
+        if (!data.deleted) data.completed = true
+      })
+
+      return {
+        todos: updatedData
+      }
+    })
   }
 
   deleteAll() {
-    console.log('delete all')
-    console.log(this.generateID())
+    this.setState(prevState => {
+      let updatedData
+      if (prevState.todos) updatedData = prevState.todos
+      else updatedData = []
+
+      updatedData.forEach(data => {
+        if (!data.deleted) data.deleted = true
+      })
+
+      return {
+        todos: updatedData
+      }
+    })
   }
 
   generateID() {
@@ -130,6 +154,13 @@ class TodoList extends Component {
   }
 
   render() {
+    let renderedItems
+    const currentView = this.state.currentView
+    if (currentView === 'active') {
+    } else if (currentView === 'completed') {
+    } else if (currentView === 'deleted') {
+    } else renderedItems = []
+
     let todoItems
     if (this.state.todos.length !== -1)
       todoItems = this.state.todos
