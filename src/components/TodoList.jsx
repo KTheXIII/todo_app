@@ -27,6 +27,8 @@ class TodoList extends Component {
     this.completeAll = this.completeAll.bind(this)
     this.deleteAll = this.deleteAll.bind(this)
     this.generateID = this.generateID.bind(this)
+    this.showAcIn = this.showAcIn.bind(this)
+    this.showDeleted = this.showDeleted.bind(this)
   }
 
   componentDidMount() {
@@ -144,6 +146,22 @@ class TodoList extends Component {
     })
   }
 
+  showAcIn() {
+    this.setState(_ => {
+      return {
+        currentView: 'active'
+      }
+    })
+  }
+
+  showDeleted() {
+    this.setState(_ => {
+      return {
+        currentView: 'deleted'
+      }
+    })
+  }
+
   generateID() {
     return (
       '_' +
@@ -156,16 +174,16 @@ class TodoList extends Component {
   render() {
     let renderedItems
     const currentView = this.state.currentView
-    if (currentView === 'active') {
-    } else if (currentView === 'completed') {
-    } else if (currentView === 'deleted') {
-    } else renderedItems = []
-
-    let todoItems
-    if (this.state.todos.length !== -1)
-      todoItems = this.state.todos
+    if (this.state.todos.length !== -1) {
+      renderedItems = this.state.todos
         .filter(item => {
-          return !item.deleted
+          if (currentView === 'completed') {
+            return !item.deleted && item.deleted
+          } else if (currentView === 'deleted') {
+            return item.deleted
+          } else {
+            return !item.deleted
+          }
         })
         .map(filtered => (
           <TodoItem
@@ -174,7 +192,7 @@ class TodoList extends Component {
             handleChange={this.handleChange}
           />
         ))
-    else todoItems = []
+    } else renderedItems = []
 
     return (
       <div className='todo-list'>
@@ -194,8 +212,15 @@ class TodoList extends Component {
             ''
           ) : (
             <div className='settings-con'>
-              <button className='settings-btn noselect'>active</button>
-              <button className='settings-btn noselect'>deleted</button>
+              <button className='settings-btn noselect' onClick={this.showAcIn}>
+                active
+              </button>
+              <button
+                className='settings-btn noselect'
+                onClick={this.showDeleted}
+              >
+                deleted
+              </button>
               <button
                 className='settings-btn downloadbtn noselect'
                 onClick={this.downloadJSON}
@@ -220,7 +245,7 @@ class TodoList extends Component {
           )}
         </div>
 
-        {this.state.isLoading ? <h1>Loading...</h1> : todoItems}
+        {this.state.isLoading ? <h1>Loading...</h1> : renderedItems}
       </div>
     )
   }
